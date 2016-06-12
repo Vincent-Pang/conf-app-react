@@ -1,19 +1,7 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var webpack = require('webpack');
-var _ = require('lodash');
-
-var isProduction = process.env.NODE_ENV === 'production';
-
-var basePlugins = [
-  new HtmlWebpackPlugin({
-    title: 'ConfApp',
-    template: './src/index.ejs'
-  }),
-  new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.optimize.DedupePlugin()
-];
+/* No production settings for now, only dev! */
 
 module.exports = [{
   cache: true,
@@ -35,22 +23,11 @@ module.exports = [{
       }
     }]
   },
-  devtool: 'source-map',
-  plugins: isProduction
-    ? _.concat(basePlugins, [
-      new webpack.optimize.UglifyJsPlugin({
-        minimize: true,
-        sourceMap: false,
-        mangle: false,
-        removeRedundantAttributes: false,
-        output: { comments: false },
-        compress: { warnings: false }
-      }),
-      new webpack.DefinePlugin({
-        'process.env': {
-          'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        }
-      })
-    ])
-    : basePlugins
+  devtool: 'eval-cheap-module-inline-source-map',
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'ConfApp',
+      template: './src/index.ejs'
+    })
+  ]
 }];
