@@ -104,7 +104,7 @@ export default class Main extends React.Component {
     let { state } = this;
     term = term.trim().toLowerCase();
     state.talkList.map(talk => {
-      talk.visible = (term === '' || talk.speaker.toLowerCase() === term);
+      talk.visible = (term === '' || _.startsWith(talk.speaker.toLowerCase(), term));
       return talk;
     });
     this.setState(state);
