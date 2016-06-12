@@ -1,0 +1,31 @@
+{
+  "name": "conf-app-react",
+  "version": "1.0.0",
+  "description": "a demo app written react.js for onesky event ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --hot --inline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymcatar/conf-app-react.git"
+  },
+  "author": "Isaac Yiu",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ymcatar/conf-app-react/issues"
+  },
+  "homepage": "https://github.com/ymcatar/conf-app-react#readme",
+  "devDependencies": {
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "html-webpack-plugin": "^2.20.0",
+    "lodash": "^4.13.1",
+    "material-ui": "^0.15.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-tap-event-plugin": "^1.0.0",
+    "webpack": "^1.13.1"
+  }
+}
