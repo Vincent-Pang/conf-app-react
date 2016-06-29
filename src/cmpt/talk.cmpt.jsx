@@ -11,44 +11,40 @@ const styles = {
   })
 };
 
-export default class Talk extends React.Component {
-  render() {
-    let { title, speaker, rating, watched, index, visible } = this.props;
-    let { handleRate, handleWatch } = this.props;
+const Talk = ({title, speaker, rating, watched, index, visible, handleRate, handleWatch}) => {
 
-    let watchLabel = watched ? 'Watch Again' : 'Watch';
+  let watchLabel = watched ? 'Watch Again' : 'Watch';
 
-    let generateIcon = iconName => (
-      <FontIcon className='material-icons'>{iconName}</FontIcon>
-    );
+  let generateIcon = iconName => (
+    <FontIcon className='material-icons'>{iconName}</FontIcon>
+  );
 
-    return (
-      <Card style={styles.main(visible)}>
-        <CardHeader
-          title={title}
-          subtitle={`by ${speaker}`}
-          avatar={<Avatar>{title.charAt(0)}</Avatar>}/>
-        <CardText>
-          <b>Rating:&nbsp;</b>{rating}
-        </CardText>
-        <CardActions>
+  return (
+    <Card style={styles.main(visible)}>
+      <CardHeader
+        title={title}
+        subtitle={`by ${speaker}`}
+        avatar={<Avatar>{title.charAt(0)}</Avatar>}/>
+      <CardText>
+        <b>Rating:&nbsp;</b>{rating}
+      </CardText>
+      <CardActions>
 
-          <FlatButton
-            onClick={() => handleWatch(index)}
-            secondary={true}
-            icon={generateIcon('remove_red_eye')}
-            label={watchLabel} />
+        <FlatButton
+          onClick={() => handleWatch(index)}
+          secondary={true}
+          icon={generateIcon('remove_red_eye')}
+          label={watchLabel} />
 
-          <FlatButton
-            onClick={() => handleRate(index)}
-            icon={generateIcon('star')}
-            label='Rate' />
+        <FlatButton
+          onClick={() => handleRate(index)}
+          icon={generateIcon('star')}
+          label='Rate' />
 
-        </CardActions>
-      </Card>
-    );
-  }
-}
+      </CardActions>
+    </Card>
+  );
+};
 
 let { string, bool, func, number } = React.PropTypes;
 Talk.propTypes = {
@@ -61,3 +57,5 @@ Talk.propTypes = {
   handleWatch: func.isRequired,
   handleRate: func.isRequired
 };
+
+export default Talk;
